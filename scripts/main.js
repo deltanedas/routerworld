@@ -17,34 +17,47 @@
 
 (() => {
 
+const d = [
+	/*l, r,  t,  b */
+	[12, 12, 12, 12],
+	[0, 32, 0, 32],
+	[0, 32, 0, 32],
+	[0, 32, 0, 32]
+];
+
 /* Override a variable from Tex.texname with router */
-const override = (texname, regname) => {
+const override = (texname, regname, i) => {
 	const tex = Tex[texname];
 	const reg = Core.atlas.find("routerworld-" + regname);
 
 	if (tex instanceof NinePatchDrawable) {
-		tex.patch = new NinePatch(reg, 12, 12, 12, 12);
+		tex.patch = new NinePatch(reg, d[i][0], d[i][1], d[i][2], d[i][3]);
 	} else if (tex instanceof TextureRegionDrawable) {
-		Tex[texname].region = reg;
+		tex.region = reg;
 	}
 };
 
 const overrideArr = arr => {
 	for (var i in arr) {
 		var h = arr[i];
-		override(h[0], h[1]);
+		override(h[0], h[1], h[2] || 0);
 	}
 };
 
 Events.on(EventType.ClientLoadEvent, run(() => {
 	overrideArr([
 		/* Colours are outer-inner */
-		["alphaBg", "grey-trans"],
 		["button", "grey-grey"],
 		["buttonDisabled", "dark-dark"],
 		["buttonTrans", "grey-trans"],
 		["buttonRed", "red-grey"],
 		["buttonDown", "white-grey"],
+		["buttonOver", "yellow-grey"],
+
+		["buttonEdge1", "grey-grey", 1],
+		["buttonEdge2", "grey-grey", 1],
+		["buttonEdge3", "grey-grey", 2],
+		["buttonEdge4", "grey-grey", 3],
 
 		["buttonSquare", "yellow-none"],
 		["buttonSelect", "yellow-grey"],
@@ -59,11 +72,13 @@ Events.on(EventType.ClientLoadEvent, run(() => {
 		["flatDownBase","yellow-trans"],
 		["inventory", "grey-grey"],
 
+		["scroll", "grey-grey"],
 		["sliderKnob", "grey-grey"],
 		["sliderKnobDown", "white-grey"],
 		["sliderKnobOver", "yellow-yellow"],
 
-		["cursor", "white-grey"]
+		["cursor", "white-grey"],
+		["whiteui", "white-white"]
 	]);
 }));
 

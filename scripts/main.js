@@ -57,9 +57,6 @@ Events.on(ClientLoadEvent, _ => {
 		["buttonEdge3", "grey-grey", 2],
 		["buttonEdge4", "grey-grey", 3],
 
-		["buttonEdgeOver1", "yellow-grey", 1],
-		["buttonEdgeOver2", "yellow-grey", 1],
-		["buttonEdgeOver3", "yellow-grey", 2],
 		["buttonEdgeOver4", "yellow-grey", 3],
 
 		["buttonSquare", "yellow-none"],

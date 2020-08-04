@@ -15,8 +15,6 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-(() => {
-
 /* Override a variable from Tex.texname with router */
 const override = (texname, regname) => {
 	const tex = Tex[texname];
@@ -36,7 +34,7 @@ const overrideArr = arr => {
 	}
 };
 
-Events.on(EventType.ClientLoadEvent, run(() => {
+onEvent(ClientLoadEvent, () => {
 	overrideArr([
 		/* Colours are outer-inner */
 		["alphaBg", "grey-trans"],
@@ -65,6 +63,4 @@ Events.on(EventType.ClientLoadEvent, run(() => {
 
 		["cursor", "white-grey"]
 	]);
-}));
-
-})();
+});

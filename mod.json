@@ -3,6 +3,7 @@
 	"displayName": "[gray]Routerworld"
 	"author": "DeltaNedas",
 	"description": "Its all router\nAlways has been\n\n[gray]install [#424242]DeltaNedas/routorio[]",
-	"version": "2.1.0",
-	"hidden": true
+	"version": "2.1.1",
+	"hidden": true,
+	"minGameVersion": 105
 }
